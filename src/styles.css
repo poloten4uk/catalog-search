@@ -1,0 +1,163 @@
+/* Favorit palette as Bootstrap variables, so utilities such as border,
+   text-body-secondary and text-success pick up the brand shades. */
+:root {
+  --bs-primary: #035aa4;
+  --bs-primary-rgb: 3, 90, 164;
+  --bs-primary-text-emphasis: #02467f;
+  --bs-primary-bg-subtle: #e7f0f8;
+  --bs-primary-border-subtle: #b7d1e8;
+  --bs-success: #177a3f;
+  --bs-success-rgb: 23, 122, 63;
+  --bs-body-color: #202f45;
+  --bs-body-color-rgb: 32, 47, 69;
+  --bs-body-bg: #f4f6f8;
+  --bs-secondary-color: #5b6b82;
+  --bs-secondary-bg: #eef2f6;
+  --bs-tertiary-bg: #f8fafc;
+  --bs-border-color: #dfe5ec;
+  --bs-link-color: #035aa4;
+  --bs-link-color-rgb: 3, 90, 164;
+  --bs-link-hover-color: #02467f;
+  --bs-link-hover-color-rgb: 2, 70, 127;
+  --bs-focus-ring-color: rgba(3, 90, 164, 0.25);
+}
+
+/* Bootstrap's compiled buttons and form controls use fixed blues. */
+.btn-primary,
+.btn-outline-primary {
+  --bs-btn-hover-bg: #02467f;
+  --bs-btn-hover-border-color: #02467f;
+  --bs-btn-active-bg: #02467f;
+  --bs-btn-active-border-color: #02467f;
+  --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-disabled-bg: var(--bs-primary);
+  --bs-btn-disabled-border-color: var(--bs-primary);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary-border-subtle);
+  --bs-btn-disabled-color: var(--bs-primary);
+}
+
+.form-check-input:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: #80acd2;
+  box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+}
+
+/* Keep the window still when "show more" appends rows above the footer. */
+main {
+  overflow-anchor: none;
+}
+
+/* Search band: brand glow and a faint blueprint grid that fades to the edges. */
+.search-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: radial-gradient(ellipse 70% 60% at 50% -10%, rgba(3, 90, 164, 0.38), transparent 70%)
+    #202f45;
+}
+
+.search-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) 50% 0 / 96px 96px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) 50% 0 / 96px 96px,
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px) 50% 0 / 24px 24px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px) 50% 0 / 24px 24px;
+  mask-image: radial-gradient(ellipse 80% 100% at 50% 30%, #000 25%, transparent 85%);
+}
+
+.search-field:focus-within {
+  box-shadow: 0 0 0 0.25rem rgba(128, 172, 210, 0.6);
+}
+
+.search-field .form-control:focus {
+  box-shadow: none;
+}
+
+.search-clear {
+  width: 3.5rem;
+  --bs-btn-color: var(--bs-secondary-color);
+  --bs-btn-hover-color: var(--bs-primary);
+  --bs-btn-hover-bg: var(--bs-secondary-bg);
+  --bs-btn-active-color: var(--bs-primary);
+  --bs-btn-active-bg: var(--bs-border-color);
+  --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+}
+
+/* Manufacturer chips: light outline, blue when selected. */
+.btn.brand-chip {
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #c9d6e4;
+  --bs-btn-hover-color: var(--bs-primary);
+  --bs-btn-hover-border-color: var(--bs-primary);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--bs-primary);
+  --bs-btn-active-border-color: var(--bs-primary);
+}
+
+/* The check mark slides open, so the chip and its neighbours resize smoothly. */
+.brand-chip-check {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 0.22s ease;
+}
+
+.brand-chip-check > span {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.brand-chip-check svg {
+  margin-inline-start: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.brand-chip.active .brand-chip-check {
+  grid-template-columns: 1fr;
+}
+
+.brand-chip.active .brand-chip-check svg {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-chip-check,
+  .brand-chip-check svg {
+    transition: none;
+  }
+}
+
+/* Bootstrap tables paint cells with the page background and dark headers. */
+.offers-table {
+  --bs-table-bg: transparent;
+}
+
+.offers-table thead th {
+  color: var(--bs-secondary-color);
+}
+
+@media (width < 360px) {
+  .quantity-stepper {
+    display: none;
+  }
+}
